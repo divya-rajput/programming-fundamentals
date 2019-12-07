@@ -2,7 +2,7 @@
 # Position: 1 2 3 4 5 6 7 8  9  10 ...
 # Value   : 0 1 1 2 3 5 8 13 21 34 ...
 
-# Recusrive solution
+# Recursive solution
 # TC: O(2^n)
 def fibo_recur(n):
     if n<=0:
@@ -11,18 +11,20 @@ def fibo_recur(n):
         return n-1
     return fibo_recur(n-2)+ fibo_recur(n-1)
 
-# Iteartive solution using array
+# Iterative solution using array
 # TC: O(n), ASC: O(n)
+arr=[0,1]
 def fibo_arr(n):
     if n<=0:
         return -1
-    arr=[0,1]
-    for x in range(n-2):
+    if n<=len(arr):
+        return arr[n-1]
+    for _ in range(n-2):
         arr.append(arr[-2]+arr[-1])
     # print(arr)
     return arr[n-1]
 
-# Iteartive solution
+# Iterative solution
 # TC: O(n), ASC: O(1)
 def optimized_fibo(n):
     if n<=0:
@@ -33,7 +35,7 @@ def optimized_fibo(n):
     # s2=1
     # s3=-1
     s1, s2, s3 = 0, 1, -1
-    for x in range(n-2):
+    for _ in range(n-2):
         s3=s2+s1
         s1=s2
         s2=s3
